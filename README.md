@@ -1,6 +1,8 @@
 # Url Shortner Assignment
 
-Welcome to the **Url Shortner** assignment from **House of Marktech**This guide will walk you through setting up and running the app locally.
+Welcome to the **Url Shortner** assignment from **House of Marktech**.
+
+This is a simple URL shortener API that allows users to shorten URLs and view statistics on their shortened URLs.
 
 ## Prerequisites
 
@@ -93,3 +95,107 @@ npm run generateDoc
 - **shortd** : Short random id generator 
 - **express-rate-limiter** : Rate limiter for the server
 - **jest** : Unit test cases
+
+  
+
+## API Endpoints
+
+### 1. Shorten a URL
+- **Endpoint**: `POST /shorten`
+- **Description**: This endpoint accepts a URL and generates a shortened version of it.
+
+#### Request
+
+**Body** (JSON):
+```json
+{
+  "url": "https://www.example.com"
+}
+```
+
+#### Response
+
+**Success (HTTP 200):**
+```json
+{
+  "shortUrl": "http://localhost:4000/abc123"
+}
+```
+**Error - Invalid URL (HTTP 400):**
+```json
+{
+  "error": "Invalid URL"
+}
+```
+
+**Error - Server Error (HTTP 500):**
+```json
+{
+  "error": "Server error"
+}
+```
+
+### 2. Redirect to Original URL
+- **Endpoint**: `GET /:shortId`
+- **Description**: This endpoint redirects the user to the original URL based on the provided short ID.
+
+#### Request
+
+**URL Parameter**:
+```makefile
+shortId: abc123
+```
+
+#### Response
+
+**Success** (HTTP 302):
+- Redirects to the original URL (e.g., `https://www.example.com`).
+
+**Error - URL Not Found** (HTTP 404):
+```json
+{
+  "error": "URL not found"
+}
+```
+
+**Error - Server Error (HTTP 500):**
+```json
+{
+  "error": "Server error"
+}
+```
+
+### 3. Get Stats for Shortened URL
+- **Endpoint**: `GET /stats/:shortId`
+- **Description**: This endpoint returns statistics for the shortened URL, including the number of clicks and the last accessed timestamp.
+
+#### Request
+
+**URL Parameter**:
+```makefile
+shortId: abc123
+```
+
+#### Response
+
+**Success (HTTP 200):**
+```json
+{
+  "clicks": 5,
+  "lastAccessed": "2024-11-25T10:20:30Z"
+}
+```
+
+**Error - URL Not Found (HTTP 404):**
+```json
+{
+  "error": "URL not found"
+}
+```
+
+**Error - Server Error (HTTP 500):**
+```json
+{
+  "error": "Server error"
+}
+```
