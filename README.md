@@ -64,7 +64,7 @@ npm run generateDoc
 
 
 ### Deployment(Vercel):
-
+url-shortner-assignment.vercel.app
 
 ---
 
