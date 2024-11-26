@@ -1,10 +1,6 @@
 const UrlModel = require("./model.js");
 const shortId = require("shortid");
-
-function isValidUrl(url) {
-    const urlRegex = /^(http|https):\/\/[^ "]+$/;
-    return urlRegex.test(url);
-}
+const {isValidUrl} = require("./utils")
 
 const shortenUrl = async (req, res) => {
     //  #swagger.tags = ['URL Shortener']
@@ -54,7 +50,7 @@ const shortenUrl = async (req, res) => {
         await newUrl.save();
         res.json({ shortUrl: `${req.protocol}://${req.get('host')}/${shortUrl}` });
     } catch (error) {
-        console.log(error);
+        // console.log(error);
         res.status(500).json({ error: 'Server error' });
     }
 }
@@ -95,7 +91,7 @@ const redirectUrl = async (req, res) => {
         await urlEntry.save();
         res.redirect(urlEntry.originalUrl);
     } catch (error) {
-        console.log(error);
+        // console.log(error);
         res.status(500).json({ error: 'Server error' });
     }
 }
@@ -145,7 +141,7 @@ const getStats = async (req, res) => {
             lastAccessed: urlEntry.lastAccessed,
         });
     } catch (error) {
-        console.log(error);
+        // console.log(error);
         res.status(500).json({ error: 'Server error' });
     }
 }

@@ -48,6 +48,12 @@ npm run dev
 ```
 By Default it is running on port 3000
 
+### 6. Running unit test cases
+```bash
+npm run test
+```
+
+
 ### 6. Access the API Documentation(Swagger Ui)
 Once the app is running, you can access the API documentation at:
 http://localhost:3000/api-docs
@@ -69,6 +75,7 @@ npm run generateDoc
 
 - **Node.js**: A JavaScript runtime built on Chrome's V8 JavaScript engine.
 - **Express.js**: A minimal and flexible Node.js web application framework.
+- **Docker** : Containerising the whole application
 
 ### Database
 
@@ -85,3 +92,4 @@ npm run generateDoc
 - **swagger-autogen**: Automatic swagger documentation generator.
 - **shortd** : Short random id generator 
 - **express-rate-limiter** : Rate limiter for the server
+- **jest** : Unit test cases
