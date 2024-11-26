@@ -64,7 +64,7 @@ npm run generateDoc
 
 
 ### Deployment(Vercel):
-url-shortner-assignment.vercel.app
+[url-shortner-assignment.vercel.app](https://url-shortner-assignment.vercel.app/)
 
 ---
 
